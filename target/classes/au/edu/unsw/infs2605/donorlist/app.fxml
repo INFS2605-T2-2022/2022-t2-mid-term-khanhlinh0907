@@ -1,11 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donorlist.Controller">
    <children>
-      <Label text="Donor List Base App" />
+      <SplitPane dividerPositions="0.3" prefHeight="407.0" prefWidth="640.0">
+         <items>
+            <ListView fx:id="donorListView" onMouseClicked="#displayFullInfo" prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="70.0" text=" First name " />
+                  <Label layoutX="14.0" layoutY="68.0" prefHeight="30.0" prefWidth="103.0" text="Gender" />
+                  <Label layoutX="14.0" layoutY="123.0" prefHeight="30.0" prefWidth="103.0" text="Blood Type" />
+                  <Label layoutX="14.0" layoutY="176.0" prefHeight="30.0" prefWidth="103.0" text="Address" />
+                  <Label layoutX="221.0" layoutY="68.0" prefHeight="30.0" prefWidth="103.0" text="Date of Birth" />
+                  <Label layoutX="14.0" layoutY="232.0" prefHeight="30.0" prefWidth="103.0" text="Mobile Number" />
+                  <Label layoutX="221.0" layoutY="232.0" prefHeight="30.0" prefWidth="103.0" text="Email Address" />
+                  <Label layoutX="14.0" layoutY="292.0" prefHeight="30.0" prefWidth="103.0" text="Note" />
+                  <Label fx:id="firstName" layoutX="102.0" layoutY="14.0" prefHeight="30.0" prefWidth="70.0" text="firstName">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bloodType" layoutX="14.0" layoutY="146.0" prefHeight="30.0" prefWidth="176.0" text="bloodType">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dob" layoutX="221.0" layoutY="94.0" prefHeight="30.0" prefWidth="176.0" text="dob">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="gender" layoutX="14.0" layoutY="94.0" prefHeight="30.0" prefWidth="176.0" text="gender">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="address" layoutX="14.0" layoutY="206.0" prefHeight="30.0" prefWidth="176.0" text="address">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="email" layoutX="221.0" layoutY="262.0" prefHeight="30.0" prefWidth="176.0" text="email">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="note" alignment="TOP_LEFT" layoutX="14.0" layoutY="322.0" prefHeight="67.0" prefWidth="421.0" text="note">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="number" layoutX="14.0" layoutY="262.0" prefHeight="30.0" prefWidth="176.0" text="number">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lastName" layoutX="341.0" layoutY="14.0" prefHeight="30.0" prefWidth="176.0" text="lastName">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="221.0" layoutY="14.0" prefHeight="30.0" prefWidth="70.0" text=" Last name " />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
    </children>
 </VBox>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donorlist.App">
+   <items>
+      <SplitPane dividerPositions="0.11683417085427136" orientation="VERTICAL" prefHeight="398.0" prefWidth="414.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="60.0" prefWidth="598.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="361.0" prefWidth="598.0">
+               <children>
+                  <SplitPane dividerPositions="0.2105704697986577" prefHeight="352.0" prefWidth="598.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="354.0" prefWidth="173.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <HBox layoutX="30.0" layoutY="30.0" prefHeight="287.0" prefWidth="414.0">
+                                 <children>
+                                    <SplitPane dividerPositions="0.08947368421052632" orientation="VERTICAL" prefHeight="287.0" prefWidth="616.0">
+                                      <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                             <children>
+                                                <Label fx:id="donorNameLabel" layoutX="251.0" layoutY="2.0" text="Label" />
+                                             </children>
+                                          </AnchorPane>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                             <children>
+                                                <AnchorPane prefHeight="287.0" prefWidth="96.0">
+                                                   <children>
+                                                      <ListView fx:id="donorListView" editable="true" layoutY="-1.0" prefHeight="258.0" prefWidth="156.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                                <Label layoutX="235.0" layoutY="14.0" text="first_name" />
+                                                <Label layoutX="235.0" layoutY="39.0" text="last_name" />
+                                                <Text layoutX="163.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" />
+                                                <Text layoutX="163.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" />
+                                                <Text layoutX="163.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth" />
+                                                <Label layoutX="236.0" layoutY="64.0" text="date_of_birth" />
+                                             </children>
+                                          </AnchorPane>
+                                      </items>
+                                    </SplitPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </items>
+</SplitPane>
