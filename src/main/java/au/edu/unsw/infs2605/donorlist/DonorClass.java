@@ -12,61 +12,61 @@ import javafx.beans.property.*;
  */
 public class DonorClass {
     //donor attributes
-    private String first_name;
-    private String last_name;
-    private String date_of_birth;
+    private String firstName;
+    private String lastName;
+    private String dateOfBirth;
     private String gender;
-    private String blood_type;
-    private String email_address;
-    private String mobile_number;
+    private String bloodType;
+    private String emailAddress;
+    private String mobileNumber;
     private String address;
     private String notes;
     
     //Constructor
     public DonorClass() {
-        this.first_name = new String();
-        this.last_name = new String();
-        this.date_of_birth = new String();
-        this.gender = new String();
-        this.blood_type = new String();
-        this.email_address = new String();
-        this.mobile_number = new String();
-        this.address = new String();
-        this.notes = new String();
+
     }
     
-    public DonorClass(String first_name, String last_name, String date_of_birth) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.date_of_birth = date_of_birth;
+    public DonorClass(String firstName, String lastName, String dateOfBirth, 
+            String gender, String bloodType, String emailAddress,
+            String mobileNumber, String address, String notes) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.bloodType = bloodType;
+        this.emailAddress = emailAddress;
+        this.mobileNumber = mobileNumber;
+        this.address = address;
+        this.notes = notes;
     }
    
     
-    //first_name
+    //firstName
     public String getFirstName() {
-        return first_name;
+        return firstName;
     }
     
     public void setFirstName(String firstName) {
-        this.first_name=firstName;
+        this.firstName = firstName;
     }
     
-    //last_name
+    //lastName
     public String getLastName() {
-        return last_name;
+        return lastName;
     }
     
     public void setLastName(String lastName) {
-        this.last_name=lastName;
+        this.lastName = lastName;
     }
     
-    //date_of_birth
+    //dateOfBirth
     public String getDOB() {
-        return date_of_birth;
+        return dateOfBirth;
     }
     
-    public void setDOB(String date_of_birth) {
-        this.date_of_birth=date_of_birth;
+    public void setDOB(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
     
     //gender
@@ -75,34 +75,34 @@ public class DonorClass {
     }
     
     public void setGender(String gender) {
-        this.gender=gender;
+        this.gender = gender;
     }
     
-    //blood_type
+    //bloodType
     public String getBloodType() {
-        return blood_type;
+        return bloodType;
     }
     
     public void setBloodType(String bloodType) {
-        this.blood_type=bloodType;
+        this.bloodType = bloodType;
     }
     
-    //email_address
+    //emailAddress
     public String getEmail() {
-        return email_address;
+        return emailAddress;
     }
     
     public void setEmail(String email) {
-        this.email_address=email;
+        this.emailAddress = email;
     }
     
-    //mobile_number
-    public String getMobileNo() {
-        return mobile_number;
+    //mobileNumber
+    public String getMobileNumber() {
+        return mobileNumber;
     }
     
-    public void setMobileNo(String mobile) {
-        this.mobile_number=mobile;
+    public void setMobileNumber(String mobile) {
+        this.mobileNumber = mobile;
     }
     
     //address
@@ -111,7 +111,7 @@ public class DonorClass {
     }
     
     public void setAddress(String address) {
-        this.address=address;
+        this.address = address;
     }
     
     //notes
@@ -120,12 +120,12 @@ public class DonorClass {
     }
     
     public void setNote(String notes) {
-        this.notes=notes;
+        this.notes = notes;
     }
 
     @Override
     public String toString() {
-        return this.first_name + " " + this.last_name;
+        return this.firstName + " " + this.lastName;
     }
     
     

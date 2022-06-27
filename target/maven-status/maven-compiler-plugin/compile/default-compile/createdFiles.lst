@@ -1,5 +1,3 @@
 module-info.class
 au/edu/unsw/infs2605/donorlist/DonorClass.class
-au/edu/unsw/infs2605/donorlist/DonorDatabase.class
-au/edu/unsw/infs2605/donorlist/App.class
 au/edu/unsw/infs2605/donorlist/CreateNewDatabase.class
