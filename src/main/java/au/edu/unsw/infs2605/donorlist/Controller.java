@@ -12,6 +12,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 /**
@@ -60,6 +62,47 @@ public class Controller implements Initializable {
     @FXML
     Label notes;
     
+        /*
+    //Create Text Fields to insert new information
+    
+    */
+    
+    @FXML
+    TextField newFirstName;
+    
+    @FXML
+    TextField newLastName;
+    
+    @FXML
+    TextField newDateOfBirth;
+    
+    @FXML
+    TextField newEmailAddress;
+    
+    @FXML
+    TextField newAddress;
+    
+    @FXML
+    TextField newMobileNumber;
+    
+    @FXML
+    TextField newNotes;
+    
+    @FXML
+    ChoiceBox<String> newGender = new ChoiceBox<>();
+ 
+    @FXML 
+    ChoiceBox<String> newBloodType = new ChoiceBox<>(); 
+    
+    @FXML
+    Button editCurrentDonor;
+    
+    @FXML
+    Button addNewDonor;
+    
+    @FXML
+    Button saveUpdate;
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -85,11 +128,11 @@ public class Controller implements Initializable {
         donorList.add(donor4);
         donorList.add(donor5);
         
-        //make sure ListView is clear before adding
-        donorListView.getItems().clear();
+        
         
         //Display List of donors in ListView
         donorListView.getItems().addAll(donorList);
+        
         
         //retrieve default information
         donorListView.getSelectionModel().select(0);
@@ -141,9 +184,131 @@ public class Controller implements Initializable {
     @FXML
     public void toNewDonorController() throws IOException {
         App.setRoot("newDonor");
-        }
     }
     
+    /*
+    Edit information of current donor
+    */
+    
+    @FXML
+    public void editCurrentDonor() {
+        //Selected donor to be edited
+        DonorClass currentDonor = donorListView.getSelectionModel().getSelectedItem();
+        
+        /*
+        Set TextFields and ChoiceBox visible
+        Make sure that the current Label and the new TextField/ChoiceBox never appears at the same time
+        */
+        
+        newFirstName.setVisible(true);
+        newLastName.setVisible(true);
+        newDateOfBirth.setVisible(true);
+        newEmailAddress.setVisible(true);
+        newAddress.setVisible(true);
+        newMobileNumber.setVisible(true);
+        newNotes.setVisible(true);
+        newGender.setVisible(true);
+        newBloodType.setVisible(true);
+        
+        //Set button addNewDonor invisible
+        addNewDonor.setVisible(false);
+        
+        //Create a confirm button to save updated information
+        saveUpdate.setVisible(true);
+        
+        
+        //firstName.setVisible(false);
+//        newLastName.setVisible(!lastName.isVisible());
+//        newDateOfBirth.setVisible(!dateOfBirth.isVisible());
+//        newEmailAddress.setVisible(!emailAddress.isVisible());
+//        newAddress.setVisible(!address.isVisible());
+//        newMobileNumber.setVisible(!mobileNumber.isVisible());
+//        newNotes.setVisible(!notes.isVisible());
+//        newGender.setVisible(!gender.isVisible());
+//        newBloodType.setVisible(!bloodType.isVisible());
+        
+        //Prefill TextField with current information of current donor
+        newFirstName.setText(currentDonor.getFirstName());
+        newLastName.setText(currentDonor.getLastName());
+        newDateOfBirth.setText(currentDonor.getDOB());
+        newEmailAddress.setText(currentDonor.getEmail());
+        newMobileNumber.setText(currentDonor.getMobileNumber());
+        newAddress.setText(currentDonor.getAddress());
+        newNotes.setText(currentDonor.getNote());
+        
+        newGender.setValue(currentDonor.getGender());
+        newBloodType.setValue(currentDonor.getBloodType());
+       
+        System.out.println(currentDonor.getFirstName());
+
+        //gender & bloodType -- choiceBox
+        createChoiceBox();
+    }
+    
+    public void createChoiceBox() {
+            //Create list of choice for Gender
+        newGender.getItems().add("Male");
+        newGender.getItems().add("Female");
+        newGender.getItems().add("Other");
+        newGender.getItems().add("Prefer not to say");
+            
+            //Create list of choice for BloodType
+        newBloodType.getItems().add("O+");
+        newBloodType.getItems().add("O-");
+        newBloodType.getItems().add("A+");
+        newBloodType.getItems().add("A-");
+        newBloodType.getItems().add("B+");
+        newBloodType.getItems().add("B-");
+        newBloodType.getItems().add("AB+");
+        newBloodType.getItems().add("AB-");
+        
+                        
+    }
+    
+    private String getChoice(ChoiceBox<String> choiceBox) {
+        String choice = choiceBox.getValue();
+        return choice;
+    }
+    
+    
+    public void saveUpdate() {
+        newFirstName.setVisible(false);
+        newLastName.setVisible(false);
+        newDateOfBirth.setVisible(false);
+        newEmailAddress.setVisible(false);
+        newAddress.setVisible(false);
+        newMobileNumber.setVisible(false);
+        newNotes.setVisible(false);
+        newGender.setVisible(false);
+        newBloodType.setVisible(false);
+        
+        //Set button addNewDonor visible
+        addNewDonor.setVisible(true);
+        
+        //Hide saveChange button 
+        saveUpdate.setVisible(false);
+    
+        //Save updated information to donorList
+        DonorClass currentDonor = donorListView.getSelectionModel().getSelectedItem();
+        
+        //currentDonor.setFirstName(newFirstName.getText());
+        currentDonor.setLastName(newLastName.getText());
+        currentDonor.setDOB(newDateOfBirth.getText());
+        currentDonor.setEmail(newEmailAddress.getText());
+        currentDonor.setMobileNumber(newMobileNumber.getText());
+        currentDonor.setNote(newNotes.getText());
+        currentDonor.setAddress(newAddress.getText());
+       
+        newGender.setValue(getChoice(newGender));
+        newBloodType.setValue(getChoice(newBloodType));
+        
+        displayFullInformation();
+        //App.setRoot("app");
+    }
+    
+}
+    
+
 // 
     
     

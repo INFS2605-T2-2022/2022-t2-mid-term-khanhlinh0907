@@ -33,9 +33,11 @@
 -->
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -133,7 +135,18 @@
                   <Label fx:id="notes" layoutX="121.0" layoutY="245.0" prefHeight="17.0" prefWidth="151.0" text="notes" />
                   <Label fx:id="lastName" layoutX="366.0" layoutY="65.0" prefHeight="17.0" prefWidth="91.0" text="lastName" />
                   <Label fx:id="gender" layoutX="366.0" layoutY="93.0" prefHeight="17.0" prefWidth="91.0" text="gender" />
-                  <Button layoutX="341.0" layoutY="354.0" mnemonicParsing="false" onMouseClicked="#toNewDonorController" text="Add New Donor" />
+                  <Button fx:id="addNewDonor" layoutX="344.0" layoutY="354.0" mnemonicParsing="false" onMouseClicked="#toNewDonorController" text="Add New Donor" />
+                  <TextField fx:id="newFirstName" layoutX="117.0" layoutY="60.0" onAction="#editCurrentDonor" visible="false" />
+                  <TextField fx:id="newDateOfBirth" layoutX="110.0" layoutY="89.0" visible="false" />
+                  <TextField fx:id="newLastName" layoutX="361.0" layoutY="61.0" prefHeight="26.0" prefWidth="134.0" visible="false" />
+                  <TextField fx:id="newEmailAddress" layoutX="110.0" layoutY="148.0" visible="false" />
+                  <TextField fx:id="newMobileNumber" layoutX="110.0" layoutY="180.0" visible="false" />
+                  <TextField fx:id="newAddress" layoutX="110.0" layoutY="211.0" prefHeight="26.0" prefWidth="247.0" visible="false" />
+                  <TextField fx:id="newNotes" layoutX="110.0" layoutY="241.0" visible="false" />
+                  <Button fx:id="editCurrentDonor" layoutX="403.0" layoutY="5.0" mnemonicParsing="false" onAction="#editCurrentDonor" text="Edit" />
+                  <ChoiceBox fx:id="newBloodType" layoutX="110.0" layoutY="119.0" prefWidth="150.0" visible="false" />
+                  <ChoiceBox fx:id="newGender" layoutX="353.0" layoutY="89.0" prefHeight="26.0" prefWidth="92.0" visible="false" />
+                  <Button fx:id="saveUpdate" layoutX="211.0" layoutY="354.0" mnemonicParsing="false" onAction="#editCurrentDonor" onMouseClicked="#saveUpdate" text="Save Change" visible="false" />
                </children>
             </AnchorPane>
          </items>
