@@ -30,7 +30,6 @@ public class NewDonorController {
     
     @FXML
     TextField year;
-   
     
     @FXML
     TextField emailAddress;
@@ -43,21 +42,10 @@ public class NewDonorController {
     
     @FXML
     TextField notes;
+   
     
-    //Get User Input
-    @FXML
-    public void getUserInput() {
-        App.setFirstName(firstName.getText());
-        App.setLastName(lastName.getText());
-        App.setEmail(emailAddress.getText());
-        String dateOfBirth = date.getText() + "/" + month.getText() + "/"
-                + year.getText();
-        App.setDateOfBirth(dateOfBirth);
-        App.setMobileNumber(mobileNumber.getText());
-        App.setAddress(address.getText());
-        App.setNotes(notes.getText());  
-    }
-        private void createChoiceBox() {
+//Get User Input
+    private void createChoiceBox() {
             
             ChoiceBox<String> gender = new ChoiceBox<>();
  
@@ -98,22 +86,25 @@ public class NewDonorController {
         
         @FXML
         public void navigateToMainScreen() throws IOException{
+        
+            App.setFirstName(firstName.getText());
+            App.setLastName(lastName.getText());
+            App.setEmail(emailAddress.getText());
+            String dateOfBirth = date.getText() + "/" + month.getText() + "/"
+                    + year.getText();
+            App.setDateOfBirth(dateOfBirth);
+            App.setMobileNumber(mobileNumber.getText());
+            App.setAddress(address.getText());
+            App.setNotes(notes.getText());  
+            
             App.setRoot("app");
             
         }
     }
     
-    
-        
-
-   
-        //button.setOnAction(e -> getChoice(gender));
         
         
         
         
         
-        
-        
-        
-}
+     

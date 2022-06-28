@@ -15,7 +15,7 @@ public class App extends Application {
     private static Scene scene;
 
     /*
-    Create static donor attributes to pass between screens
+    These static attributes are used to create new donor
     */
     
     private static String firstName;

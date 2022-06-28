@@ -93,12 +93,13 @@ public class Controller implements Initializable {
         donorListView.getSelectionModel().select(0);
         
         //Display full information of donors
-        displayFullInformation();       
-        }
-    
-        public void displayFullInformation() {
+        displayFullInformation(); 
+        
+        createNewDonor();
+    }
+    public void displayFullInformation() {
             //selected donor
-            DonorClass current = donorListView.getSelectionModel().getSelectedItem();
+        DonorClass current = donorListView.getSelectionModel().getSelectedItem();
             
             //Display selected donor name on top of Detail view
             label.setText(current.getFirstName() + " " + current.getLastName());
@@ -113,7 +114,26 @@ public class Controller implements Initializable {
             mobileNumber.setText(current.getMobileNumber());
             address.setText(current.getAddress());
             notes.setText(current.getNote());
-        }
+    }
+    
+    public void createNewDonor() {
+            DonorClass newDonor = new DonorClass();
+            
+            newDonor.setFirstName(App.getFirstName());
+            System.out.println(newDonor.getFirstName());
+            newDonor.setLastName(App.getLastName());
+            newDonor.setDOB(App.getDateOfBirth());
+            newDonor.setEmail(App.getEmail());
+            newDonor.setMobileNumber(App.getMobileNumber());
+            newDonor.setNote(App.getNotes());
+            newDonor.setAddress(App.getAddress());
+            newDonor.setGender(App.getGender());
+            newDonor.setBloodType(App.getBloodType());
+            
+            donorList.add(newDonor);
+            donorListView.getItems().add(newDonor);
+    }
+        
         
     //Change to New Donor Screen
     @FXML
