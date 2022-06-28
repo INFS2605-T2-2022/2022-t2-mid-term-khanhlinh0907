@@ -32,6 +32,7 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
@@ -42,7 +43,7 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donorlist.Controller">
    <children>
-      <SplitPane dividerPositions="0.256269592476489" prefHeight="407.0" prefWidth="640.0">
+      <SplitPane dividerPositions="0.2563" prefHeight="407.0" prefWidth="640.0">
          <items>
             <ListView fx:id="donorListView" onMouseClicked="#displayFullInformation" prefHeight="398.0" prefWidth="163.0" SplitPane.resizableWithParent="false" />
             <AnchorPane prefHeight="398.0" prefWidth="425.0">
@@ -132,6 +133,7 @@
                   <Label fx:id="notes" layoutX="121.0" layoutY="245.0" prefHeight="17.0" prefWidth="151.0" text="notes" />
                   <Label fx:id="lastName" layoutX="366.0" layoutY="65.0" prefHeight="17.0" prefWidth="91.0" text="lastName" />
                   <Label fx:id="gender" layoutX="366.0" layoutY="93.0" prefHeight="17.0" prefWidth="91.0" text="gender" />
+                  <Button layoutX="341.0" layoutY="354.0" mnemonicParsing="false" onMouseClicked="#toNewDonorController" text="Add New Donor" />
                </children>
             </AnchorPane>
          </items>

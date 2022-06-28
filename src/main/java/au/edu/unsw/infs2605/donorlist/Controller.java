@@ -4,26 +4,24 @@
  */
 package au.edu.unsw.infs2605.donorlist;
 
-//import java.sql.Connection;
-//import java.sql.DriverManager;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-//import java.sql.ResultSet;
-//import java.sql.Statement;
 import java.net.URL;
 import java.util.ResourceBundle;
-//import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Label;
 /**
  *
- * @author khanhlinh0907
+ * @author Linh To - z5272228
  */
 
 //Show donor list names on ListView
-import javafx.scene.control.Label;
+
 public class Controller implements Initializable {
+    
     @FXML
     private ListView<DonorClass> donorListView;
     
@@ -117,12 +115,11 @@ public class Controller implements Initializable {
             notes.setText(current.getNote());
         }
         
-        /* Change to New Donor Screen
-        @FXML
-        public void toNewDonorController() throws IOException {
-            App.setRoot("newDonorController");
+    //Change to New Donor Screen
+    @FXML
+    public void toNewDonorController() throws IOException {
+        App.setRoot("newDonor");
         }
-        */
     }
     
 // 
