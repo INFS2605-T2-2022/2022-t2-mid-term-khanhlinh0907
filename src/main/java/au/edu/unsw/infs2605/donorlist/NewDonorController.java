@@ -5,7 +5,10 @@
 package au.edu.unsw.infs2605.donorlist;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
@@ -14,7 +17,8 @@ import javafx.scene.control.TextField;
  *
  * @author khanhlinh0907
  */
-public class NewDonorController {
+
+public class NewDonorController implements Initializable{
     //Create TextField to get user's input
     @FXML
     TextField firstName;
@@ -42,40 +46,41 @@ public class NewDonorController {
     
     @FXML
     TextField notes;
-   
+    
+    @FXML ChoiceBox<String> gender = new ChoiceBox<>();
+ 
+    @FXML ChoiceBox<String> bloodType = new ChoiceBox<>();  
     
 //Get User Input
-    private void createChoiceBox() {
-            
-            ChoiceBox<String> gender = new ChoiceBox<>();
- 
-            ChoiceBox<String> bloodType = new ChoiceBox<>();  
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        createChoiceBox();
+        //Get choice
+        App.setGender(getChoice(gender));
+        App.setBloodType(getChoice(bloodType));
         
-            //Create list of choice for Gender
-            gender.getItems().add("Male");
-            gender.getItems().add("Female");
-            gender.getItems().add("Other");
-            gender.getItems().add("Prefer not to say");
-        
-            //Create list of choice for BloodType
-            bloodType.getItems().add("O+");
-            bloodType.getItems().add("O-");
-            bloodType.getItems().add("A+");
-            bloodType.getItems().add("A-");
-            bloodType.getItems().add("B+");
-            bloodType.getItems().add("B-");
-            bloodType.getItems().add("AB+");
-            bloodType.getItems().add("AB-");
+    }
     
-            //Set a default value
-            gender.setValue("Female");
-            bloodType.setValue("O+");
-        
-            //Get choice
-            App.setGender(getChoice(gender));
-            App.setBloodType(getChoice(bloodType));
+    public void createChoiceBox() {
+            //Create list of choice for Gender
+        gender.getItems().add("Male");
+        gender.getItems().add("Female");
+        gender.getItems().add("Other");
+        gender.getItems().add("Prefer not to say");
             
-            
+            //Create list of choice for BloodType
+        bloodType.getItems().add("O+");
+        bloodType.getItems().add("O-");
+        bloodType.getItems().add("A+");
+        bloodType.getItems().add("A-");
+        bloodType.getItems().add("B+");
+        bloodType.getItems().add("B-");
+        bloodType.getItems().add("AB+");
+        bloodType.getItems().add("AB-");
+    
+            //Set choiceBox lable
+        gender.setValue("Female");
+        bloodType.setValue("O+");                     
             //bloodType.setOnAction((event) -> getChoice(bloodType));
         } 
         

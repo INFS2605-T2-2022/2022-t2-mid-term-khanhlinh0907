@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 /**
  *
  * @author Linh To - z5272228
@@ -59,6 +60,7 @@ public class Controller implements Initializable {
     @FXML
     Label notes;
     
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         DonorClass donor1 = new DonorClass("Hailey", "Huynh", "02/7/2000", 
@@ -97,6 +99,7 @@ public class Controller implements Initializable {
         
         createNewDonor();
     }
+    
     public void displayFullInformation() {
             //selected donor
         DonorClass current = donorListView.getSelectionModel().getSelectedItem();
@@ -133,7 +136,6 @@ public class Controller implements Initializable {
             donorList.add(newDonor);
             donorListView.getItems().add(newDonor);
     }
-        
         
     //Change to New Donor Screen
     @FXML
