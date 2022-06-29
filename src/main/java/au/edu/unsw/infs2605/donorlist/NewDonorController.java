@@ -11,7 +11,10 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 
 /**
@@ -48,18 +51,32 @@ public class NewDonorController implements Initializable{
     @FXML
     TextField notes;
     
-    @FXML ChoiceBox<String> gender = new ChoiceBox<>();
+    @FXML 
+    ChoiceBox<String> gender = new ChoiceBox<>();
  
-    @FXML ChoiceBox<String> bloodType = new ChoiceBox<>();  
+    @FXML 
+    ChoiceBox<String> bloodType = new ChoiceBox<>(); 
     
+    @FXML
+    Spinner bloodDonationSpinner;
+    
+    @FXML
+    Spinner plasmaDonationSpinner;
+    
+    @FXML
+    Text errorMessage;
     
 //Get User Input
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         createChoiceBox();
-        //Get choice
-//        App.setGender(getChoice(gender));
-//        App.setBloodType(getChoice(bloodType));
+        
+        //Create spinner
+        SpinnerValueFactory<Integer> bloodSpinnerValue = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,100,0);
+        bloodDonationSpinner.setValueFactory(bloodSpinnerValue);
+        
+        SpinnerValueFactory<Integer> plasmaSpinnerValue = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,100,0);
+        plasmaDonationSpinner.setValueFactory(plasmaSpinnerValue);
         
     }
     
@@ -80,10 +97,9 @@ public class NewDonorController implements Initializable{
         bloodType.getItems().add("AB+");
         bloodType.getItems().add("AB-");
     
-            //Set choiceBox lable
-        gender.setValue("Female");
-        bloodType.setValue("O+");                     
-            //bloodType.setOnAction((event) -> getChoice(bloodType));
+        //Set default value of choiceBox
+        gender.setValue(" ");
+        bloodType.setValue(" ");                     
         } 
         
         private String getChoice(ChoiceBox<String> choiceBox) {
@@ -103,18 +119,33 @@ public class NewDonorController implements Initializable{
             newDonor.setMobileNumber(mobileNumber.getText());
             newDonor.setAddress(address.getText());
             newDonor.setNote(notes.getText()); 
+            
             newDonor.setGender(getChoice(gender));
             newDonor.setBloodType(getChoice(bloodType));
             
-            //spinner
-            
-            //Pass object DonorClass to App
-            App.setDonor(newDonor);
+            //Take blood donation and plasma donation count from Spinners
+            newDonor.setBloodDonationCount((int)bloodDonationSpinner.getValue());
+            newDonor.setPlasmaDonationCount((int)plasmaDonationSpinner.getValue());
             
             //Add new donor to donorList
-            donorList.add(App.getDonor());
-            //donorListView.getItems().add(App.getDonor());
-            App.setRoot("app");
+            //Check whether compulsory information is added
+            
+            if (newDonor.getFirstName().isBlank() || newDonor.getLastName().isBlank()
+                    || newDonor.getBloodType().isBlank() || newDonor.getDOB().isBlank()
+                    || newDonor.getMobileNumber().isBlank()) {
+                errorMessage.setVisible(true);
+            }
+            else {
+                //Create new donor
+                donorList.add(newDonor);
+            
+                //Change back to main screen
+                App.setRoot("app");
+            }    
+            
+            
+            
+            
             
         }
     }

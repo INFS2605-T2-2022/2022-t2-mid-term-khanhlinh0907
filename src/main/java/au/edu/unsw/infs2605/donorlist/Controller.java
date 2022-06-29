@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
 import java.util.List;
@@ -100,6 +102,9 @@ public class Controller implements Initializable {
     Button editCurrentDonor;
     
     @FXML
+    Label lastTimeUpdated;
+    
+    @FXML
     Button addNewDonor;
     
     @FXML
@@ -122,20 +127,20 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         DonorClass donor1 = new DonorClass("Hailey", "Huynh", "02/7/2000", 
                 "Female", "O+", "hnha00@gmail.com", "0429351234", 
-                "189 Anzac Parade, Kensington NSW 2033", "-", 1, 2);
+                "189 Anzac Parade, Kensington NSW 2033", "-", 1, 2, "-");
         DonorClass donor2 = new DonorClass("Kelly", "Dao", "15/10/2000", 
                 "Female", "A+", "kelly.dao@gmail.com", "0489214583", 
-                "93 Gardeners Road, Kingsford NSW 2032", "allergies", 2, 1);
+                "93 Gardeners Road, Kingsford NSW 2032", "allergies", 2, 1, "-");
         DonorClass donor3 = new DonorClass("Oliver", "Tran", "23/7/2001", 
                 "Male", "0-", "olivertran01@gmail.com", "0444335252", 
                 "235 Maroubra Road, Marboura NSW 2035", "allergic with fruit", 
-                0, 3);
+                0, 3, "-");
         DonorClass donor4 = new DonorClass("Mia", "Dang", "01/2/2002", 
                 "Female", "B+", "mia.dang@outlook.com", "0485723512", 
-                "18 High Street, Kensington NSW 2033", "-", 1, 3);
+                "18 High Street, Kensington NSW 2033", "-", 1, 3, "-");
         DonorClass donor5 = new DonorClass("Chloe", "Le", "01/8/1999", 
                 "Female", "AB+", "chloelee99@gmail.com", "0475823534", 
-                "188 Fedgerald Avenue, Maroubra NSW 2035", "-", 3, 1);
+                "188 Fedgerald Avenue, Maroubra NSW 2035", "-", 3, 1, "-");
         
         //prevent duplicate data
         if (donorList.isEmpty()){
@@ -175,6 +180,7 @@ public class Controller implements Initializable {
             notes.setText(current.getNote());
             bloodCount.setText(Integer.toString(current.getBloodDonationCount()));
             plasmaCount.setText(Integer.toString(current.getPlasmaDonationCount()));
+            lastTimeUpdated.setText(current.getLastTimeUpdated());
             
     }
         
@@ -211,7 +217,7 @@ public class Controller implements Initializable {
         editPlasmaDonationCount.setVisible(true);
         bloodCount.setVisible(false);
         plasmaCount.setVisible(false);
-        
+             
         //prevent users' mistake from clicking on different donor name when editing
         donorListView.setDisable(true);
        
@@ -245,6 +251,10 @@ public class Controller implements Initializable {
         SpinnerValueFactory<Integer> plasmaCountSpinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,100);
         plasmaCountSpinner.setValue(currentDonor.getPlasmaDonationCount());
         editPlasmaDonationCount.setValueFactory(plasmaCountSpinner);
+        
+        
+        
+        
     }
     
     public void createChoiceBox() {
@@ -263,8 +273,7 @@ public class Controller implements Initializable {
         newBloodType.getItems().add("B-");
         newBloodType.getItems().add("AB+");
         newBloodType.getItems().add("AB-");
-        
-                        
+                      
     }
     
     private String getChoice(ChoiceBox<String> choiceBox) {
@@ -297,6 +306,9 @@ public class Controller implements Initializable {
         //Hide saveChange button 
         saveUpdate.setVisible(false);
         
+        //Set last updated visible
+        lastTimeUpdated.setVisible(true);
+        
         //Allow users to click on another donor on the list
         donorListView.setDisable(false);
         
@@ -310,8 +322,26 @@ public class Controller implements Initializable {
         currentDonor.setAddress(newAddress.getText());
         newGender.setValue(getChoice(newGender));
         newBloodType.setValue(getChoice(newBloodType));
+        
+        /*
+        Note: only updated when either count of blood donations or 
+        plasma donations updated
+        */  
+        if (currentDonor.getBloodDonationCount() != (int) editBloodDonationCount.getValue()
+                || currentDonor.getPlasmaDonationCount() != (int) editPlasmaDonationCount.getValue()) {
+            //Save last time updated
+            DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            String currentTime = now.format(dateTimeFormat);
+            currentDonor.setLastTimeUpdated(currentTime);
+        }
+        
         currentDonor.setBloodDonationCount((int)editBloodDonationCount.getValue());
         currentDonor.setPlasmaDonationCount((int)editPlasmaDonationCount.getValue());
+        
+
+        
+        
         
         donorListView.refresh();
         displayFullInformation();

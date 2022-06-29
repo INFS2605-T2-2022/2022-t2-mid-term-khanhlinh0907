@@ -13,8 +13,6 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-    
-    private static DonorClass donor;
    
     @Override
     public void start(Stage stage) throws IOException {
@@ -26,18 +24,6 @@ public class App extends Application {
     
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
-    }
-    
-    /*
-    Getter and setter method of each attribute
-    */
-    
-    //donor
-    static void setDonor(DonorClass donor) {
-        App.donor = donor;
-    }
-    static DonorClass getDonor() {
-        return donor;
     }
     
     private static Parent loadFXML(String fxml) throws IOException {

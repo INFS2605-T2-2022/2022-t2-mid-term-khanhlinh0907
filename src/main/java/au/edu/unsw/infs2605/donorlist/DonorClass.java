@@ -23,6 +23,7 @@ public class DonorClass {
     private String notes;
     private int bloodDonationCount;
     private int plasmaDonationCount;
+    private String lastTimeUpdated;
     
     //Constructor
     public DonorClass() {
@@ -32,7 +33,7 @@ public class DonorClass {
     public DonorClass(String firstName, String lastName, String dateOfBirth, 
             String gender, String bloodType, String emailAddress,
             String mobileNumber, String address, String notes, 
-            int bloodDonationCount, int plasmaDonationCount) {
+            int bloodDonationCount, int plasmaDonationCount, String lastUpdatedTime) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -44,6 +45,8 @@ public class DonorClass {
         this.notes = notes;
         this.bloodDonationCount = bloodDonationCount;
         this.plasmaDonationCount = plasmaDonationCount;
+        this.lastTimeUpdated = lastTimeUpdated;
+        
     }
    
     
@@ -146,6 +149,14 @@ public class DonorClass {
         this.plasmaDonationCount = plasmaDonationCount;
     }     
 
+    public String getLastTimeUpdated() {
+        return lastTimeUpdated;
+    }
+    
+    public void setLastTimeUpdated(String lastTimeUpdated) {
+        this.lastTimeUpdated = lastTimeUpdated;
+    }
+    
     @Override
     public String toString() {
         return this.firstName + " " + this.lastName;
