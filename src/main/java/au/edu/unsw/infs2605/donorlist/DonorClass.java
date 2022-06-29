@@ -21,6 +21,8 @@ public class DonorClass {
     private String mobileNumber;
     private String address;
     private String notes;
+    private int bloodDonationCount;
+    private int plasmaDonationCount;
     
     //Constructor
     public DonorClass() {
@@ -29,7 +31,8 @@ public class DonorClass {
     
     public DonorClass(String firstName, String lastName, String dateOfBirth, 
             String gender, String bloodType, String emailAddress,
-            String mobileNumber, String address, String notes) {
+            String mobileNumber, String address, String notes, 
+            int bloodDonationCount, int plasmaDonationCount) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -39,6 +42,8 @@ public class DonorClass {
         this.mobileNumber = mobileNumber;
         this.address = address;
         this.notes = notes;
+        this.bloodDonationCount = bloodDonationCount;
+        this.plasmaDonationCount = plasmaDonationCount;
     }
    
     
@@ -122,6 +127,24 @@ public class DonorClass {
     public void setNote(String notes) {
         this.notes = notes;
     }
+    
+    //bloodDonationCount
+    public int getBloodDonationCount() {
+        return bloodDonationCount;
+    }
+    
+    public void setBloodDonationCount(int bloodDonationCount) {
+        this.bloodDonationCount = bloodDonationCount;
+    }  
+    
+    //plasmaDonationCount
+    public int getPlasmaDonationCount() {
+        return plasmaDonationCount;
+    }
+    
+    public void setPlasmaDonationCount(int plasmaDonationCount) {
+        this.plasmaDonationCount = plasmaDonationCount;
+    }     
 
     @Override
     public String toString() {

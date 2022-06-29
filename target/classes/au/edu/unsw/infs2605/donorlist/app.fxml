@@ -36,6 +36,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -135,7 +136,7 @@
                   <Label fx:id="notes" layoutX="121.0" layoutY="245.0" prefHeight="17.0" prefWidth="151.0" text="notes" />
                   <Label fx:id="lastName" layoutX="366.0" layoutY="65.0" prefHeight="17.0" prefWidth="91.0" text="lastName" />
                   <Label fx:id="gender" layoutX="366.0" layoutY="93.0" prefHeight="17.0" prefWidth="91.0" text="gender" />
-                  <Button fx:id="addNewDonor" layoutX="344.0" layoutY="354.0" mnemonicParsing="false" onMouseClicked="#toNewDonorController" text="Add New Donor" />
+                  <Button fx:id="addNewDonor" layoutX="344.0" layoutY="367.0" mnemonicParsing="false" onMouseClicked="#toNewDonorController" text="Add New Donor" />
                   <TextField fx:id="newFirstName" layoutX="117.0" layoutY="60.0" onAction="#editCurrentDonor" visible="false" />
                   <TextField fx:id="newDateOfBirth" layoutX="110.0" layoutY="89.0" visible="false" />
                   <TextField fx:id="newLastName" layoutX="361.0" layoutY="61.0" prefHeight="26.0" prefWidth="134.0" visible="false" />
@@ -146,7 +147,11 @@
                   <Button fx:id="editCurrentDonor" layoutX="403.0" layoutY="5.0" mnemonicParsing="false" onAction="#editCurrentDonor" text="Edit" />
                   <ChoiceBox fx:id="newBloodType" layoutX="110.0" layoutY="119.0" prefWidth="150.0" visible="false" />
                   <ChoiceBox fx:id="newGender" layoutX="353.0" layoutY="89.0" prefHeight="26.0" prefWidth="92.0" visible="false" />
-                  <Button fx:id="saveUpdate" layoutX="211.0" layoutY="354.0" mnemonicParsing="false" onAction="#editCurrentDonor" onMouseClicked="#saveUpdate" text="Save Change" visible="false" />
+                  <Button fx:id="saveUpdate" layoutX="211.0" layoutY="354.0" mnemonicParsing="false" onAction="#saveUpdate" onMouseClicked="#saveUpdate" text="Save Change" visible="false" />
+                  <Spinner fx:id="editPlasmaDonationCount" layoutX="377.0" layoutY="325.0" prefHeight="26.0" prefWidth="72.0" visible="false" />
+                  <Spinner fx:id="editBloodDonationCount" layoutX="377.0" layoutY="295.0" prefHeight="16.0" prefWidth="71.0" visible="false" />
+                  <Label fx:id="bloodCount" layoutX="388.0" layoutY="300.0" text="blood" />
+                  <Label fx:id="plasmaCount" layoutX="388.0" layoutY="330.0" text="plasma" />
                </children>
             </AnchorPane>
          </items>

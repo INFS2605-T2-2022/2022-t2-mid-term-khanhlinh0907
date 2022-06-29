@@ -4,6 +4,7 @@
  */
 package au.edu.unsw.infs2605.donorlist;
 
+import static au.edu.unsw.infs2605.donorlist.Controller.donorList;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,13 +52,14 @@ public class NewDonorController implements Initializable{
  
     @FXML ChoiceBox<String> bloodType = new ChoiceBox<>();  
     
+    
 //Get User Input
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         createChoiceBox();
         //Get choice
-        App.setGender(getChoice(gender));
-        App.setBloodType(getChoice(bloodType));
+//        App.setGender(getChoice(gender));
+//        App.setBloodType(getChoice(bloodType));
         
     }
     
@@ -91,17 +93,27 @@ public class NewDonorController implements Initializable{
         
         @FXML
         public void navigateToMainScreen() throws IOException{
-        
-            App.setFirstName(firstName.getText());
-            App.setLastName(lastName.getText());
-            App.setEmail(emailAddress.getText());
+            DonorClass newDonor = new DonorClass();
+            newDonor.setFirstName(firstName.getText());
+            newDonor.setLastName(lastName.getText());
+            newDonor.setEmail(emailAddress.getText());
             String dateOfBirth = date.getText() + "/" + month.getText() + "/"
                     + year.getText();
-            App.setDateOfBirth(dateOfBirth);
-            App.setMobileNumber(mobileNumber.getText());
-            App.setAddress(address.getText());
-            App.setNotes(notes.getText());  
+            newDonor.setDOB(dateOfBirth);
+            newDonor.setMobileNumber(mobileNumber.getText());
+            newDonor.setAddress(address.getText());
+            newDonor.setNote(notes.getText()); 
+            newDonor.setGender(getChoice(gender));
+            newDonor.setBloodType(getChoice(bloodType));
             
+            //spinner
+            
+            //Pass object DonorClass to App
+            App.setDonor(newDonor);
+            
+            //Add new donor to donorList
+            donorList.add(App.getDonor());
+            //donorListView.getItems().add(App.getDonor());
             App.setRoot("app");
             
         }
