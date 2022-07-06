@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+
 /**
  *
  * @author Linh To - z5272228
@@ -66,10 +67,7 @@ public class Controller implements Initializable {
     @FXML
     Label notes;
     
-        /*
     //Create Text Fields to insert new information
-    
-    */
     
     @FXML
     TextField newFirstName;
@@ -92,39 +90,51 @@ public class Controller implements Initializable {
     @FXML
     TextField newNotes;
     
+    //Create Choice Box to choose Gender and BloodType
+    
     @FXML
     ChoiceBox<String> newGender = new ChoiceBox<>();
  
     @FXML 
     ChoiceBox<String> newBloodType = new ChoiceBox<>(); 
     
+    //Edit button
     @FXML
     Button editCurrentDonor;
     
+    //Last time updated
     @FXML
     Label lastTimeUpdated;
     
+    //Add button
     @FXML
     Button addNewDonor;
     
+    //Save button
     @FXML
     Button saveUpdate;
     
+    //Count number of donations
     @FXML
     Label bloodCount;
     
     @FXML
     Label plasmaCount;
     
+    //Edit number of blood and plasma donations
     @FXML
     Spinner editBloodDonationCount;
     
     @FXML
     Spinner editPlasmaDonationCount;
-
     
+    //Cancel change
+    @FXML
+    Button cancelChange;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //Sample data
         DonorClass donor1 = new DonorClass("Hailey", "Huynh", "02/7/2000", 
                 "Female", "O+", "hnha00@gmail.com", "0429351234", 
                 "189 Anzac Parade, Kensington NSW 2033", "-", 1, 2, "-");
@@ -142,7 +152,7 @@ public class Controller implements Initializable {
                 "Female", "AB+", "chloelee99@gmail.com", "0475823534", 
                 "188 Fedgerald Avenue, Maroubra NSW 2035", "-", 3, 1, "-");
         
-        //prevent duplicate data
+        //Only add sample data when the list is empty to prevent duplicate data
         if (donorList.isEmpty()){
             donorList.add(donor1);
             donorList.add(donor2);
@@ -154,40 +164,33 @@ public class Controller implements Initializable {
         //Display List of donors in ListView
         donorListView.getItems().addAll(donorList);
         
-        
-        //retrieve default information
+        //Default - display information of the first donor in the list
         donorListView.getSelectionModel().select(0);
        
+        //Display full information of the chosen name
         displayFullInformation(); 
     }
     
     public void displayFullInformation() {
-            //selected donor
-            DonorClass current = donorListView.getSelectionModel().getSelectedItem();
+        //selected donor
+        DonorClass current = donorListView.getSelectionModel().getSelectedItem();
             
-            //Display selected donor name on top of Detail view
-            label.setText(current.getFirstName() + " " + current.getLastName());
+        //Display selected donor name on top of Detail view
+        label.setText(current.getFirstName() + " " + current.getLastName());
             
-            //display information
-            firstName.setText(current.getFirstName());
-            lastName.setText(current.getLastName());
-            gender.setText(current.getGender());
-            dateOfBirth.setText(current.getDOB());
-            bloodType.setText(current.getBloodType());
-            emailAddress.setText(current.getEmail());
-            mobileNumber.setText(current.getMobileNumber());
-            address.setText(current.getAddress());
-            notes.setText(current.getNote());
-            bloodCount.setText(Integer.toString(current.getBloodDonationCount()));
-            plasmaCount.setText(Integer.toString(current.getPlasmaDonationCount()));
-            lastTimeUpdated.setText(current.getLastTimeUpdated());
-            
-    }
-        
-    //Change to New Donor Screen
-    @FXML
-    public void toNewDonorController() throws IOException {
-        App.setRoot("newDonor");
+        //display information
+        firstName.setText(current.getFirstName());
+        lastName.setText(current.getLastName());
+        gender.setText(current.getGender());
+        dateOfBirth.setText(current.getDOB());
+        bloodType.setText(current.getBloodType());
+        emailAddress.setText(current.getEmail());
+        mobileNumber.setText(current.getMobileNumber());
+        address.setText(current.getAddress());
+        notes.setText(current.getNote());
+        bloodCount.setText(Integer.toString(current.getBloodDonationCount()));
+        plasmaCount.setText(Integer.toString(current.getPlasmaDonationCount()));
+        lastTimeUpdated.setText(current.getLastTimeUpdated());     
     }
     
     /*
@@ -198,12 +201,9 @@ public class Controller implements Initializable {
     public void editCurrentDonor() {
         //Selected donor to be edited
         DonorClass currentDonor = donorListView.getSelectionModel().getSelectedItem();
-              
-        /*
-        Set TextFields and ChoiceBox visible
-        Make sure that the current Label and the new TextField/ChoiceBox never appears at the same time
-        */
-        
+
+        //Set TextFields and ChoiceBox visible to update new information
+       
         newFirstName.setVisible(true);
         newLastName.setVisible(true);
         newDateOfBirth.setVisible(true);
@@ -217,16 +217,17 @@ public class Controller implements Initializable {
         editPlasmaDonationCount.setVisible(true);
         bloodCount.setVisible(false);
         plasmaCount.setVisible(false);
-             
-        //prevent users' mistake from clicking on different donor name when editing
-        donorListView.setDisable(true);
-       
-        
-        //Set button addNewDonor invisible
-        addNewDonor.setVisible(false);
-        
-        //Create a confirm button to save updated information
+         
+        //Confirm button and Cancel change button
         saveUpdate.setVisible(true);
+        cancelChange.setVisible(true);
+        
+        //Prevent users from clicking on different donor name when editing
+        donorListView.setDisable(true);
+          
+        //Set button addNewDonor and Edit invisible
+        addNewDonor.setVisible(false);
+        editCurrentDonor.setVisible(false);
         
         //Prefill TextField with current information of current donor
         newFirstName.setText(currentDonor.getFirstName());
@@ -236,56 +237,63 @@ public class Controller implements Initializable {
         newMobileNumber.setText(currentDonor.getMobileNumber());
         newAddress.setText(currentDonor.getAddress());
         newNotes.setText(currentDonor.getNote());
-        
         newGender.setValue(currentDonor.getGender());
         newBloodType.setValue(currentDonor.getBloodType());
  
-        //gender & bloodType -- choiceBox
+        //Create ChoiceBox to choose Gender and Blood Type
         createChoiceBox(); 
         
-        //spinner
-        SpinnerValueFactory<Integer> bloodCountSpinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,100);
+        //Edit counts of blood donations
+        SpinnerValueFactory<Integer> bloodCountSpinner = 
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0,100);
         bloodCountSpinner.setValue(currentDonor.getBloodDonationCount());
         editBloodDonationCount.setValueFactory(bloodCountSpinner);
         
-        SpinnerValueFactory<Integer> plasmaCountSpinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,100);
+        //Edit counts of plasma donations
+        SpinnerValueFactory<Integer> plasmaCountSpinner = 
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0,100);
         plasmaCountSpinner.setValue(currentDonor.getPlasmaDonationCount());
-        editPlasmaDonationCount.setValueFactory(plasmaCountSpinner);
-        
-        
-        
-        
+        editPlasmaDonationCount.setValueFactory(plasmaCountSpinner);     
     }
     
     public void createChoiceBox() {
-            //Create list of choice for Gender
-        newGender.getItems().add("Male");
-        newGender.getItems().add("Female");
-        newGender.getItems().add("Other");
-        newGender.getItems().add("Prefer not to say");
-            
-            //Create list of choice for BloodType
-        newBloodType.getItems().add("O+");
-        newBloodType.getItems().add("O-");
-        newBloodType.getItems().add("A+");
-        newBloodType.getItems().add("A-");
-        newBloodType.getItems().add("B+");
-        newBloodType.getItems().add("B-");
-        newBloodType.getItems().add("AB+");
-        newBloodType.getItems().add("AB-");
-                      
+        
+        //Create list of choice for Gender
+        if (newGender.getItems().isEmpty()) {
+            newGender.getItems().add("Male");
+            newGender.getItems().add("Female");
+            newGender.getItems().add("Other");
+            newGender.getItems().add("Prefer not to say");   
+        }
+
+        //Clear value of the Choice Box before adding
+        //newBloodType.getItems().clear();
+        
+        if (newBloodType.getItems().isEmpty()) {
+            newBloodType.getItems().add("O+");
+            newBloodType.getItems().add("O-");
+            newBloodType.getItems().add("A+");
+            newBloodType.getItems().add("A-");
+            newBloodType.getItems().add("B+");
+            newBloodType.getItems().add("B-");
+            newBloodType.getItems().add("AB+");
+            newBloodType.getItems().add("AB-");  
+        }
+        //Create list of choice for BloodType
+        
     }
     
+    //Get users's choice from choiceBox
     private String getChoice(ChoiceBox<String> choiceBox) {
         String choice = choiceBox.getValue();
         return choice;
     }
     
-    
+    //Save updated information of current donor
     public void saveUpdate() {
         DonorClass currentDonor = donorListView.getSelectionModel().getSelectedItem();
-        //int currentIndex = donorListView.getEditingIndex();
         
+        //Hide Textfield and ChoiceBox to avoid users from mistakenly editing
         newFirstName.setVisible(false);
         newLastName.setVisible(false);
         newDateOfBirth.setVisible(false);
@@ -300,11 +308,13 @@ public class Controller implements Initializable {
         bloodCount.setVisible(true);
         plasmaCount.setVisible(true);
         
-        //Set button addNewDonor visible
+        //Set button addNewDonor and Edit visible
         addNewDonor.setVisible(true);
+        editCurrentDonor.setVisible(true);
         
-        //Hide saveChange button 
+        //Hide Confirm and Cancel button
         saveUpdate.setVisible(false);
+        cancelChange.setVisible(false);
         
         //Set last updated visible
         lastTimeUpdated.setVisible(true);
@@ -312,7 +322,7 @@ public class Controller implements Initializable {
         //Allow users to click on another donor on the list
         donorListView.setDisable(false);
         
-       
+        //Update new information of current donor
         currentDonor.setFirstName(newFirstName.getText());
         currentDonor.setLastName(newLastName.getText());
         currentDonor.setDOB(newDateOfBirth.getText());
@@ -320,11 +330,12 @@ public class Controller implements Initializable {
         currentDonor.setMobileNumber(newMobileNumber.getText());
         currentDonor.setNote(newNotes.getText());
         currentDonor.setAddress(newAddress.getText());
-        newGender.setValue(getChoice(newGender));
-        newBloodType.setValue(getChoice(newBloodType));
+        currentDonor.setGender(getChoice(newGender));
+        currentDonor.setBloodType(getChoice(newBloodType));  
         
         /*
-        Note: only updated when either count of blood donations or 
+        Update last time updated
+        Note: only update when either count of blood donations or 
         plasma donations updated
         */  
         if (currentDonor.getBloodDonationCount() != (int) editBloodDonationCount.getValue()
@@ -336,18 +347,27 @@ public class Controller implements Initializable {
             currentDonor.setLastTimeUpdated(currentTime);
         }
         
+        //Update new count of blood and plasma donations
         currentDonor.setBloodDonationCount((int)editBloodDonationCount.getValue());
         currentDonor.setPlasmaDonationCount((int)editPlasmaDonationCount.getValue());
         
-
-        
-        
-        
         donorListView.refresh();
-        displayFullInformation();
-        
-    }       
+        displayFullInformation(); 
+    }   
     
+    //Cancel changes
+    public void cancelChange() throws IOException {
+        App.setRoot("app");
+    }
+    
+    /*
+    Create new Donor
+    */
+    
+    @FXML
+    public void toNewDonorController() throws IOException {
+        App.setRoot("newDonor");
+    }  
 }
     
     

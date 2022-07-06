@@ -64,7 +64,19 @@ public class NewDonorController implements Initializable{
     Spinner plasmaDonationSpinner;
     
     @FXML
-    Text errorMessage;
+    Text firstNameError;
+    
+    @FXML
+    Text lastNameError;
+    
+    @FXML
+    Text dobError; 
+    
+    @FXML
+    Text bloodTypeError;
+    
+    @FXML
+    Text mobileNumberError;
     
 //Get User Input
     @Override
@@ -77,17 +89,22 @@ public class NewDonorController implements Initializable{
         
         SpinnerValueFactory<Integer> plasmaSpinnerValue = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,100,0);
         plasmaDonationSpinner.setValueFactory(plasmaSpinnerValue);
-        
     }
     
     public void createChoiceBox() {
-            //Create list of choice for Gender
+        //Clear value of the Choice Box before adding
+        gender.getItems().clear();
+        
+        //Create list of choice for Gender       
         gender.getItems().add("Male");
         gender.getItems().add("Female");
         gender.getItems().add("Other");
         gender.getItems().add("Prefer not to say");
             
-            //Create list of choice for BloodType
+        //Clear value of the Choice Box before adding
+        bloodType.getItems().clear();
+        
+        //Create list of choice for BloodType
         bloodType.getItems().add("O+");
         bloodType.getItems().add("O-");
         bloodType.getItems().add("A+");
@@ -100,55 +117,96 @@ public class NewDonorController implements Initializable{
         //Set default value of choiceBox
         gender.setValue(" ");
         bloodType.setValue(" ");                     
-        } 
+    } 
         
-        private String getChoice(ChoiceBox<String> choiceBox) {
-            String choice = choiceBox.getValue();
-            return choice;
-        }
-        
-        @FXML
-        public void navigateToMainScreen() throws IOException{
-            DonorClass newDonor = new DonorClass();
-            newDonor.setFirstName(firstName.getText());
-            newDonor.setLastName(lastName.getText());
-            newDonor.setEmail(emailAddress.getText());
-            String dateOfBirth = date.getText() + "/" + month.getText() + "/"
-                    + year.getText();
-            newDonor.setDOB(dateOfBirth);
-            newDonor.setMobileNumber(mobileNumber.getText());
-            newDonor.setAddress(address.getText());
-            newDonor.setNote(notes.getText()); 
-            
-            newDonor.setGender(getChoice(gender));
-            newDonor.setBloodType(getChoice(bloodType));
-            
-            //Take blood donation and plasma donation count from Spinners
-            newDonor.setBloodDonationCount((int)bloodDonationSpinner.getValue());
-            newDonor.setPlasmaDonationCount((int)plasmaDonationSpinner.getValue());
-            
-            //Add new donor to donorList
-            //Check whether compulsory information is added
-            
-            if (newDonor.getFirstName().isBlank() || newDonor.getLastName().isBlank()
-                    || newDonor.getBloodType().isBlank() || newDonor.getDOB().isBlank()
-                    || newDonor.getMobileNumber().isBlank()) {
-                errorMessage.setVisible(true);
-            }
-            else {
-                //Create new donor
-                donorList.add(newDonor);
-            
-                //Change back to main screen
-                App.setRoot("app");
-            }    
-            
-            
-            
-            
-            
-        }
+    private String getChoice(ChoiceBox<String> choiceBox) {
+        String choice = choiceBox.getValue();
+        return choice;
     }
+    
+    //When navigating to main screen, information of new donor is saved
+    @FXML
+    public void navigateToMainScreen() throws IOException{
+        
+        DonorClass newDonor = new DonorClass();
+        newDonor.setFirstName(firstName.getText());
+        newDonor.setLastName(lastName.getText());
+        newDonor.setEmail(emailAddress.getText());
+        String dateOfBirth = date.getText() + "/" + month.getText() + "/"
+                + year.getText();
+        newDonor.setDOB(dateOfBirth);
+        newDonor.setMobileNumber(mobileNumber.getText());
+        newDonor.setAddress(address.getText());
+        newDonor.setNote(notes.getText()); 
+        newDonor.setGender(getChoice(gender));
+        newDonor.setBloodType(getChoice(bloodType));
+            
+        //Take blood donation and plasma donation count from Spinners
+        newDonor.setBloodDonationCount((int)bloodDonationSpinner.getValue());
+        newDonor.setPlasmaDonationCount((int)plasmaDonationSpinner.getValue());
+            
+        //Add new donor to donorList
+        //Check whether compulsory information is provided
+        
+        if (newDonor.getFirstName().isBlank()) {
+            firstNameError.setVisible(true);
+        }
+        else {
+            firstNameError.setVisible(false);
+        }
+        
+        if (newDonor.getLastName().isBlank()) {
+            lastNameError.setVisible(true);
+        }
+        else {
+            lastNameError.setVisible(false);
+        }
+        
+        if (newDonor.getBloodType().isBlank()) {
+            bloodTypeError.setVisible(true);
+        }
+        else {
+            bloodTypeError.setVisible(false);
+        }
+        
+        if (date.getText().length() == 0 || month.getText().length() == 0
+                || year.getText().length() == 0) {
+            dobError.setVisible(true);
+        }
+        else {
+            dobError.setVisible(false);
+        }
+        
+        if (newDonor.getMobileNumber().isBlank()) {
+            mobileNumberError.setVisible(true);
+        }
+        else {
+            mobileNumberError.setVisible(false);
+        }
+        
+        if (firstNameError.isVisible() == false 
+                && lastNameError.isVisible() == false
+                && dobError.isVisible() == false
+                && bloodTypeError.isVisible() == false
+                && mobileNumberError.isVisible() == false) {
+            //Create new donor
+            donorList.add(newDonor);
+            //Change back to main screen
+            App.setRoot("app");
+        } 
+/*
+         && newDonor.getLastName() != null
+                && newDonor.getBloodTyisVisible() && newDonor.getLastName() != null
+                && newDonor.getBloodType() != null 
+                && newDonor.getMobileNumber() != null
+                && newDonor.getDOB() != null) {
+*/
+    }
+    
+    public void cancelButton() throws IOException {
+        App.setRoot("app");
+    }
+}
     
         
         
