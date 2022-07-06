@@ -184,6 +184,7 @@ public class NewDonorController implements Initializable{
             mobileNumberError.setVisible(false);
         }
         
+        //If no error messages occur
         if (firstNameError.isVisible() == false 
                 && lastNameError.isVisible() == false
                 && dobError.isVisible() == false
@@ -193,14 +194,7 @@ public class NewDonorController implements Initializable{
             donorList.add(newDonor);
             //Change back to main screen
             App.setRoot("app");
-        } 
-/*
-         && newDonor.getLastName() != null
-                && newDonor.getBloodTyisVisible() && newDonor.getLastName() != null
-                && newDonor.getBloodType() != null 
-                && newDonor.getMobileNumber() != null
-                && newDonor.getDOB() != null) {
-*/
+        }
     }
     
     public void cancelButton() throws IOException {
