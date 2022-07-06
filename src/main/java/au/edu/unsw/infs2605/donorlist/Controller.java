@@ -256,6 +256,9 @@ public class Controller implements Initializable {
         editPlasmaDonationCount.setValueFactory(plasmaCountSpinner);     
     }
     
+    /*
+    Set up Choice Box for choosing Gender and BloodType
+    */
     public void createChoiceBox() {
         
         //Create list of choice for Gender
@@ -266,9 +269,7 @@ public class Controller implements Initializable {
             newGender.getItems().add("Prefer not to say");   
         }
 
-        //Clear value of the Choice Box before adding
-        //newBloodType.getItems().clear();
-        
+        //Create list of choice for BloodType
         if (newBloodType.getItems().isEmpty()) {
             newBloodType.getItems().add("O+");
             newBloodType.getItems().add("O-");
@@ -278,9 +279,7 @@ public class Controller implements Initializable {
             newBloodType.getItems().add("B-");
             newBloodType.getItems().add("AB+");
             newBloodType.getItems().add("AB-");  
-        }
-        //Create list of choice for BloodType
-        
+        }  
     }
     
     //Get users's choice from choiceBox

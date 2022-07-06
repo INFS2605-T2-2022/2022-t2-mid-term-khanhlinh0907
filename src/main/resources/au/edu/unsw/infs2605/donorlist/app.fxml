@@ -47,118 +47,122 @@
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donorlist.Controller">
    <children>
-      <SplitPane dividerPositions="0.2563" prefHeight="407.0" prefWidth="640.0">
-         <items>
-            <ListView fx:id="donorListView" onMouseClicked="#displayFullInformation" prefHeight="398.0" prefWidth="163.0" SplitPane.resizableWithParent="false" />
-            <AnchorPane prefHeight="398.0" prefWidth="425.0">
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff2521" height="31.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="492.0" />
-                  <Text layoutX="18.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                  <Text fill="#362ea4" layoutX="18.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Information">
-                     <font>
-                        <Font name="Verdana" size="13.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="18.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
-                     <font>
-                        <Font name="Verdana" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="282.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
-                     <font>
-                        <Font name="Verdana" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="18.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth">
-                     <font>
-                        <Font name="Verdana" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="282.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender">
-                     <font>
-                        <Font name="Verdana" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="18.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email Address">
-                     <font>
-                        <Font name="Verdana" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="18.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile Number">
-                     <font>
-                        <Font name="Verdana" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="18.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Type">
-                     <font>
-                        <Font name="Verdana" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="18.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
-                     <font>
-                        <Font name="Verdana" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="18.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes">
-                     <font>
-                        <Font name="Verdana" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text fill="#362ea4" layoutX="18.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donation History">
-                     <font>
-                        <Font name="Verdana" size="13.0" />
-                     </font>
-                  </Text>
-                  <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="-3.0" prefHeight="31.0" prefWidth="493.0" text="Donor Name" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Text layoutX="18.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total blood donations">
-                     <font>
-                        <Font name="Verdana" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="18.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total plasma donations">
-                     <font>
-                        <Font name="Verdana" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="18.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last updated:">
-                     <font>
-                        <Font name="Verdana Italic" size="12.0" />
-                     </font>
-                  </Text>
-                  <Label fx:id="firstName" layoutX="121.0" layoutY="65.0" prefHeight="17.0" prefWidth="151.0" text="firstName" />
-                  <Label fx:id="dateOfBirth" layoutX="121.0" layoutY="93.0" prefHeight="17.0" prefWidth="151.0" text="dateOfBirth" />
-                  <Label fx:id="bloodType" layoutX="121.0" layoutY="123.0" prefHeight="17.0" prefWidth="151.0" text="bloodType" />
-                  <Label fx:id="emailAddress" layoutX="121.0" layoutY="152.0" prefHeight="17.0" prefWidth="212.0" text="email" />
-                  <Label fx:id="mobileNumber" layoutX="121.0" layoutY="184.0" prefHeight="17.0" prefWidth="151.0" text="mobileNumber" />
-                  <Label fx:id="address" layoutX="121.0" layoutY="215.0" prefHeight="17.0" prefWidth="273.0" text="address" />
-                  <Label fx:id="notes" layoutX="121.0" layoutY="245.0" prefHeight="17.0" prefWidth="151.0" text="notes" />
-                  <Label fx:id="lastName" layoutX="366.0" layoutY="65.0" prefHeight="17.0" prefWidth="91.0" text="lastName" />
-                  <Label fx:id="gender" layoutX="366.0" layoutY="93.0" prefHeight="17.0" prefWidth="91.0" text="gender" />
-                  <Button id="addNewDonor" fx:id="addNewDonor" layoutX="359.0" layoutY="363.0" mnemonicParsing="false" onMouseClicked="#toNewDonorController" text="Add New Donor" />
-                  <TextField id="newFirstName" fx:id="newFirstName" layoutX="110.0" layoutY="60.0" onAction="#editCurrentDonor" visible="false" />
-                  <TextField id="newDOB" fx:id="newDateOfBirth" layoutX="110.0" layoutY="89.0" visible="false" />
-                  <TextField id="newLastName" fx:id="newLastName" layoutX="361.0" layoutY="61.0" prefHeight="26.0" prefWidth="93.0" visible="false" />
-                  <TextField id="newEmail" fx:id="newEmailAddress" layoutX="110.0" layoutY="148.0" visible="false" />
-                  <TextField id="newMobile" fx:id="newMobileNumber" layoutX="110.0" layoutY="180.0" visible="false" />
-                  <TextField id="newAddress" fx:id="newAddress" layoutX="110.0" layoutY="211.0" prefHeight="26.0" prefWidth="272.0" visible="false" />
-                  <TextField id="newNote" fx:id="newNotes" layoutX="110.0" layoutY="241.0" visible="false" />
-                  <Button id="edit" fx:id="editCurrentDonor" layoutX="438.0" layoutY="32.0" mnemonicParsing="false" onAction="#editCurrentDonor" text="Edit" />
-                  <ChoiceBox fx:id="newBloodType" layoutX="110.0" layoutY="119.0" prefHeight="26.0" prefWidth="81.0" visible="false" />
-                  <ChoiceBox fx:id="newGender" layoutX="358.0" layoutY="88.0" prefHeight="26.0" prefWidth="109.0" visible="false" />
-                  <Button id="saveChange" fx:id="saveUpdate" layoutX="311.0" layoutY="364.0" mnemonicParsing="false" onAction="#saveUpdate" onMouseClicked="#saveUpdate" text="Save Change" visible="false" />
-                  <Spinner fx:id="editPlasmaDonationCount" layoutX="377.0" layoutY="325.0" prefHeight="26.0" prefWidth="72.0" visible="false" />
-                  <Spinner fx:id="editBloodDonationCount" layoutX="377.0" layoutY="295.0" prefHeight="16.0" prefWidth="71.0" visible="false" />
-                  <Label fx:id="bloodCount" layoutX="388.0" layoutY="300.0" text="blood" />
-                  <Label fx:id="plasmaCount" layoutX="388.0" layoutY="330.0" text="plasma" />
-                  <Label fx:id="lastTimeUpdated" layoutX="115.0" layoutY="359.0" prefHeight="17.0" prefWidth="206.0" text="Label" visible="false" />
-                  <Button id="cancel" fx:id="cancelChange" layoutX="412.0" layoutY="364.0" mnemonicParsing="false" onAction="#cancelChange" text="Cancel" visible="false" />
-               </children>
-            </AnchorPane>
-         </items>
-      </SplitPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <SplitPane dividerPositions="0.2563" prefHeight="407.0" prefWidth="640.0">
+               <items>
+                  <ListView fx:id="donorListView" onMouseClicked="#displayFullInformation" prefHeight="398.0" prefWidth="163.0" SplitPane.resizableWithParent="false" />
+                  <AnchorPane prefHeight="398.0" prefWidth="425.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff2521" height="31.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="492.0" />
+                        <Text layoutX="18.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text fill="#362ea4" layoutX="18.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Information">
+                           <font>
+                              <Font name="Verdana" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="18.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="282.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="18.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth">
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="282.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender">
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="18.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email Address">
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="18.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile Number">
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="18.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Type">
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="18.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="18.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes">
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#362ea4" layoutX="18.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donation History">
+                           <font>
+                              <Font name="Verdana" size="13.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="-3.0" prefHeight="31.0" prefWidth="493.0" text="Donor Name" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Text layoutX="18.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total blood donations">
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="18.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total plasma donations">
+                           <font>
+                              <Font name="Verdana" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="18.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last updated:">
+                           <font>
+                              <Font name="Verdana Italic" size="12.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="firstName" layoutX="121.0" layoutY="65.0" prefHeight="17.0" prefWidth="151.0" text="firstName" />
+                        <Label fx:id="dateOfBirth" layoutX="121.0" layoutY="93.0" prefHeight="17.0" prefWidth="151.0" text="dateOfBirth" />
+                        <Label fx:id="bloodType" layoutX="121.0" layoutY="123.0" prefHeight="17.0" prefWidth="151.0" text="bloodType" />
+                        <Label fx:id="emailAddress" layoutX="121.0" layoutY="152.0" prefHeight="17.0" prefWidth="212.0" text="email" />
+                        <Label fx:id="mobileNumber" layoutX="121.0" layoutY="184.0" prefHeight="17.0" prefWidth="151.0" text="mobileNumber" />
+                        <Label fx:id="address" layoutX="121.0" layoutY="215.0" prefHeight="17.0" prefWidth="273.0" text="address" />
+                        <Label fx:id="notes" layoutX="121.0" layoutY="245.0" prefHeight="17.0" prefWidth="151.0" text="notes" />
+                        <Label fx:id="lastName" layoutX="366.0" layoutY="65.0" prefHeight="17.0" prefWidth="91.0" text="lastName" />
+                        <Label fx:id="gender" layoutX="366.0" layoutY="93.0" prefHeight="17.0" prefWidth="91.0" text="gender" />
+                        <Button id="addNewDonor" fx:id="addNewDonor" layoutX="359.0" layoutY="363.0" mnemonicParsing="false" onMouseClicked="#toNewDonorController" text="Add New Donor" />
+                        <TextField id="newFirstName" fx:id="newFirstName" layoutX="110.0" layoutY="60.0" onAction="#editCurrentDonor" visible="false" />
+                        <TextField id="newDOB" fx:id="newDateOfBirth" layoutX="110.0" layoutY="89.0" visible="false" />
+                        <TextField id="newLastName" fx:id="newLastName" layoutX="361.0" layoutY="61.0" prefHeight="26.0" prefWidth="93.0" visible="false" />
+                        <TextField id="newEmail" fx:id="newEmailAddress" layoutX="110.0" layoutY="148.0" visible="false" />
+                        <TextField id="newMobile" fx:id="newMobileNumber" layoutX="110.0" layoutY="180.0" visible="false" />
+                        <TextField id="newAddress" fx:id="newAddress" layoutX="110.0" layoutY="211.0" prefHeight="26.0" prefWidth="272.0" visible="false" />
+                        <TextField id="newNote" fx:id="newNotes" layoutX="110.0" layoutY="241.0" visible="false" />
+                        <Button id="edit" fx:id="editCurrentDonor" layoutX="438.0" layoutY="32.0" mnemonicParsing="false" onAction="#editCurrentDonor" text="Edit" />
+                        <ChoiceBox fx:id="newBloodType" layoutX="110.0" layoutY="119.0" prefHeight="26.0" prefWidth="81.0" visible="false" />
+                        <ChoiceBox fx:id="newGender" layoutX="358.0" layoutY="88.0" prefHeight="26.0" prefWidth="109.0" visible="false" />
+                        <Button id="saveChange" fx:id="saveUpdate" layoutX="311.0" layoutY="364.0" mnemonicParsing="false" onAction="#saveUpdate" onMouseClicked="#saveUpdate" text="Save Change" visible="false" />
+                        <Spinner fx:id="editPlasmaDonationCount" layoutX="377.0" layoutY="325.0" prefHeight="26.0" prefWidth="72.0" visible="false" />
+                        <Spinner fx:id="editBloodDonationCount" layoutX="377.0" layoutY="295.0" prefHeight="16.0" prefWidth="71.0" visible="false" />
+                        <Label fx:id="bloodCount" layoutX="388.0" layoutY="300.0" text="blood" />
+                        <Label fx:id="plasmaCount" layoutX="388.0" layoutY="330.0" text="plasma" />
+                        <Label fx:id="lastTimeUpdated" layoutX="115.0" layoutY="359.0" prefHeight="17.0" prefWidth="206.0" text="Label" visible="false" />
+                        <Button id="cancel" fx:id="cancelChange" layoutX="412.0" layoutY="364.0" mnemonicParsing="false" onAction="#cancelChange" text="Cancel" visible="false" />
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
    </children>
 </VBox>
